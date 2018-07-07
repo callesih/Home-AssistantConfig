@@ -1,0 +1,33 @@
+group.all_scripts:
+  hidden: false
+group.all_automations:
+  hidden: false
+group.all_devices:
+  hidden: false
+group.all_switches:
+  hidden: false
+group.all_lights:
+  hidden: false
+  
+## Xiaomi ##
+ # Humidity    #
+sensor.humidity_158d0002281dbd:
+  friendly_name: Humidity_Bedroom
+sensor.humidity_158d00020ef826:
+  friendly_name: Humidity_Living room
+sensor.humidity_158d00020ef44d:
+  friendly_name: Humidity_Balcony
+ # Temperature #
+sensor.temperature_158d0002281dbd:
+  friendly_name: Temperature_Bedroom
+sensor.temperature_158d00020ef826:
+  friendly_name: Temperature_Living room
+sensor.temperature_158d00020ef44d:
+  friendly_name: Temperature_Balcony
+ # Binary sensor #
+binary_sensor.door_window_sensor_158d0001fa3524:
+  friendly_name: Front Door
+  icon: mdi:door
+ # Gateway light #
+light.gateway_light_7811dcb8f3c0:
+  friendly_name: Gateway light

@@ -1,0 +1,239 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret latitude
+  longitude: !secret longitude
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: 4
+  # metric for Metric, imperial for Imperial
+  unit_system: metric
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: Europe/Stockholm
+  # Customization file
+  customize: !include_dir_merge_named customize/
+
+# Show links to resources in log and frontend
+#introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  # api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Discover some devices automatically
+discovery:
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+xiaomi_aqara:
+  discovery_retry: 5
+  gateways:
+    - key: !secret xiaomi_aqara_key
+
+notify:
+  - name: pushbullet
+    platform: pushbullet
+    api_key: !secret pushbullet
+  - name: telegram
+    platform: telegram
+    chat_id: !secret telegram_bot_chat_ids
+    
+telegram_bot:
+  - platform: polling
+    api_key: !secret telegram_bot_api
+    allowed_chat_ids:
+      - !secret telegram_bot_chat_ids
+
+# Example configuration.yaml entry
+recorder:
+  exclude:
+#    domains:
+#      - automation
+    entities:
+      - sun.sun # Don't record sun data
+      - sensor.time
+      - sensor.city
+      - sensor.calle_work
+      - sensor.malin_school_16
+      - sensor.malin_school_55
+      - group.vasttrafik
+      - device_tracker.ipad
+      - media_player.chromecast
+      - group.hall
+      - group.living_room
+      - group.bedroom
+      - sensor.weather_symbol
+
+  
+# Nmap device tracker
+device_tracker:
+#  - platform: nmap_tracker
+#    hosts: 192.168.1.1/30
+#    interval_seconds: 10
+#    track_new_devices: true
+#    #home_interval: 10
+#    consider_home: 210
+#    exclude:
+#      - 192.168.1.13
+#      - 192.168.1.1
+#      - 192.168.1.11    #xbox wifi      
+##      - 192.168.1.3
+##      - 192.168.1.8      
+  - platform: netgear
+    host: 192.168.1.1
+    username: !secret netgear_username
+    password: !secret netgear_password
+    interval_seconds: 10
+    consider_home: 120
+#  - platform: bluetooth_tracker
+#    interval_seconds: 10
+#    consider_home: 180
+#    track_new_devices: false
+  - platform: ping
+    interval_seconds: 15
+    consider_home: 180
+    hosts:
+      Calle: 192.168.1.6
+ 
+weblink:
+  entities:
+    - name: Spotify Web
+      url: https://open.spotify.com/browse/featured
+      icon: mdi:spotify
+    - name: Google calendar
+      url: https://calendar.google.com/calendar/r
+      icon: mdi:calendar
+    
+#ZONEZ
+zone:
+  name: Work
+  latitude: !secret latitude_work
+  longitude: !secret longitude_work
+  radius: 300
+  
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+#mqtt:
+#  broker: 192.168.1.13
+#  port: 1883
+#  client_id: home-assistant-1
+#  username: !secret mqtt_user
+#  password: !secret mqtt_password
+
+# Weather prediction
+sensor:
+  - platform: yr
+    name: Weather
+#    forecast: 24
+    monitored_conditions:
+      - temperature
+      - symbol
+      - windSpeed
+#      - humidity
+#      - cloudiness
+
+
+#  - platform: vasttrafik
+#    key: dt90TmrDs7To2Si2lqDNoe8fo0ca
+#    secret: RPTOqSWV0vv2VXN_nau2EiVgIKsa
+#    departures:
+#      - name: Calle Work
+#        from: Lindholmen
+#        heading: Volvo Torslanda PV
+#        delay: 1
+#      - name: Malin School 16
+#        from: Lindholmen
+#        heading: Chalmers
+#        delay: 1
+#      - name: Malin School 55
+#        from: Lindholmsplatsen
+#        heading: Sven Hultins Plats
+#        delay: 1
+#      - name: City
+#        from: Lindholmen
+#        heading: Nordstan
+#        delay: 1
+ 
+
+  - platform: time_date
+    display_options:
+      - 'time'
+#     - 'date'
+#      - 'date_time'
+#      - 'time_date'
+#      - 'time_utc'
+
+  - platform: systemmonitor
+    resources:
+      - type: disk_free
+        arg: /
+      - type: memory_free
+      - type: processor_use
+      - type: last_boot
+
+     
+#  - platform: mqtt
+#    name: "Temperature"
+#    state_topic: "sensor/temperature"
+#    qos: 0
+#    unit_of_measurement: "ºC"
+#
+#  - platform: mqtt
+#    name: "Humidity"
+#    state_topic: "sensor/humidity"
+#    qos: 0
+#    unit_of_measurement: "%"
+
+media_player:
+  - platform: cast
+    host: 192.168.1.5
+  - platform: spotify
+    client_id:  !secret spotify_client_id
+    client_secret: !secret spotify_client_secret
+#    aliases:
+#        16924d79fd1377d3ea2c57383d535633: 'Chromecast'
+
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+group: !include_dir_merge_named group/
+automation: !include_dir_merge_list automation/
+script: !include_dir_merge_named script/
+
+#logger:
+#  default: warning
+#  logs:
+#    homeassistant.components.media_player.spotify: info

@@ -1,0 +1,59 @@
+#VIEWS / TABS
+#default_view to determinate what to view on start page
+default_view:
+  view: yes
+  name: Home
+  entities:
+    - device_tracker.callehtc10
+    - device_tracker.maliniphone
+    - device_tracker.ipad
+    - group.weather
+    - group.vasttrafik
+    - sensor.weather_symbol
+    - weblink.router
+    - group.weblinks
+    - sensor.temperature_158d00020ef826
+
+appartment_view:
+  view: yes
+  name: Appartment
+  entities:
+    - group.living_room
+    - group.bedroom
+    - group.hall
+    - group.environment
+    - group.balcony
+    
+#living_room_view:
+#  view: yes
+#  name: Living Room
+#  entities:
+#    - group.living_room
+
+#bedroom_view:
+#  view: yes
+#  name: Bedroom
+#  entities:
+
+#hall_view:
+#  view: yes
+#  name: Hall
+#  entities:
+
+media_view:
+  view: yes
+  name: Media
+  entities:
+    - media_player.spotify 
+    - media_player.chromecast 
+
+system_view:
+  view: yes
+  name: System
+  entities:
+    - group.system_info
+    - group.all_scripts
+    - group.all_automations
+    - group.all_devices
+    - group.all_switches
+    - group.all_lights

@@ -1,0 +1,30 @@
+
+#test_telegram:
+#  alias: 'test_telegram'
+#  sequence:
+#    - service: notify.telegram
+#      data:
+#        title: TEST MESSAGE
+#        message: 'This is a test!'  
+#    - service: notify.pushbullet
+#      data:
+#        title: TEST MESSAGE
+#        message: 'This is a test!' 
+#        target: device/HTC10
+      
+test_telegram:
+  alias: 'test_telegram'
+  sequence:
+    - service: notify.telegram
+      data:
+        title: TEST MESSAGE
+        message: 'This is a test!'  
+        
+test_pushbullet:
+  alias: 'test_pushbullet'
+  sequence:
+    - service: notify.pushbullet
+      data:
+        title: TEST MESSAGE
+        message: 'This is a test!' 
+        target: device/HTC10
