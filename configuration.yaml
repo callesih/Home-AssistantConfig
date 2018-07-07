@@ -162,8 +162,8 @@ sensor:
 
 
 #  - platform: vasttrafik
-#    key: dt90TmrDs7To2Si2lqDNoe8fo0ca
-#    secret: RPTOqSWV0vv2VXN_nau2EiVgIKsa
+#    key: !secret vasttrafik_key
+#    secret: !secret vasttrafik_secret
 #    departures:
 #      - name: Calle Work
 #        from: Lindholmen
