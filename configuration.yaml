@@ -49,11 +49,6 @@ history:
 # View all events in a logbook
 logbook:
 
-
-
-notify: !include_dir_merge_list notify/
-
-
 telegram_bot:
   - platform: polling
     api_key: !secret telegram_bot_api
@@ -140,70 +135,6 @@ sun:
 #  username: !secret mqtt_user
 #  password: !secret mqtt_password
 
-# Weather prediction
-sensor:
-  - platform: yr
-    name: Weather
-#    forecast: 24
-    monitored_conditions:
-      - temperature
-      - symbol
-      - windSpeed
-#      - humidity
-#      - cloudiness
-
-
-#  - platform: vasttrafik
-#    key: !secret vasttrafik_key
-#    secret: !secret vasttrafik_secret
-#    departures:
-#      - name: Calle Work
-#        from: Lindholmen
-#        heading: Volvo Torslanda PV
-#        delay: 1
-#      - name: Malin School 16
-#        from: Lindholmen
-#        heading: Chalmers
-#        delay: 1
-#      - name: Malin School 55
-#        from: Lindholmsplatsen
-#        heading: Sven Hultins Plats
-#        delay: 1
-#      - name: City
-#        from: Lindholmen
-#        heading: Nordstan
-#        delay: 1
-
-
-  - platform: time_date
-    display_options:
-      - 'time'
-#     - 'date'
-#      - 'date_time'
-#      - 'time_date'
-#      - 'time_utc'
-
-  - platform: systemmonitor
-    resources:
-      - type: disk_free
-        arg: /
-      - type: memory_free
-      - type: processor_use
-      - type: last_boot
-
-
-#  - platform: mqtt
-#    name: "Temperature"
-#    state_topic: "sensor/temperature"
-#    qos: 0
-#    unit_of_measurement: "ºC"
-#
-#  - platform: mqtt
-#    name: "Humidity"
-#    state_topic: "sensor/humidity"
-#    qos: 0
-#    unit_of_measurement: "%"
-
 media_player:
   - platform: cast
     host: 192.168.1.5
@@ -228,6 +159,8 @@ cloud:
 group: !include_dir_merge_named group/
 automation: !include_dir_merge_list automation/
 script: !include_dir_merge_named script/
+notify: !include_dir_merge_list notify/
+sensor: !include_dir_merge_list sensor/
 
 #logger:
 #  default: warning
