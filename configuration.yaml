@@ -75,37 +75,6 @@ recorder:
       - group.bedroom
       - sensor.weather_symbol
 
-
-# Nmap device tracker
-device_tracker:
-#  - platform: nmap_tracker
-#    hosts: 192.168.1.1/30
-#    interval_seconds: 10
-#    track_new_devices: true
-#    #home_interval: 10
-#    consider_home: 210
-#    exclude:
-#      - 192.168.1.13
-#      - 192.168.1.1
-#      - 192.168.1.11    #xbox wifi
-##      - 192.168.1.3
-##      - 192.168.1.8
-  - platform: netgear
-    host: 192.168.1.1
-    username: !secret netgear_username
-    password: !secret netgear_password
-    interval_seconds: 10
-    consider_home: 120
-#  - platform: bluetooth_tracker
-#    interval_seconds: 10
-#    consider_home: 180
-#    track_new_devices: false
-  - platform: ping
-    interval_seconds: 15
-    consider_home: 180
-    hosts:
-      Calle: 192.168.1.6
-
 weblink:
   entities:
     - name: Spotify Web
@@ -135,15 +104,6 @@ sun:
 #  username: !secret mqtt_user
 #  password: !secret mqtt_password
 
-media_player:
-  - platform: cast
-    host: 192.168.1.5
-  - platform: spotify
-    client_id:  !secret spotify_client_id
-    client_secret: !secret spotify_client_secret
-#    aliases:
-#        16924d79fd1377d3ea2c57383d535633: 'Chromecast'
-
 xiaomi_aqara:
   discovery_retry: 5
   gateways:
@@ -161,6 +121,8 @@ automation: !include_dir_merge_list automation/
 script: !include_dir_merge_named script/
 notify: !include_dir_merge_list notify/
 sensor: !include_dir_merge_list sensor/
+media_player: !include_dir_merge_list media_player/
+device_tracker: !include_dir_merge_list device_tracker/
 
 #logger:
 #  default: warning
