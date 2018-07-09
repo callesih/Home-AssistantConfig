@@ -1,20 +1,11 @@
 homeassistant:
-  # Name of the location where Home Assistant is running
   name: Home
-  # Location required to calculate the time the sun rises and sets
   latitude: !secret latitude
   longitude: !secret longitude
-  # Impacts weather/sunrise data (altitude above sea level in meters)
   elevation: 4
-  # metric for Metric, imperial for Imperial
   unit_system: metric
-  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: Europe/Stockholm
-  # Customization file
   customize: !include_dir_merge_named customize/
-
-# Show links to resources in log and frontend
-#introduction:
 
 # Enables the frontend
 frontend:
@@ -33,9 +24,9 @@ http:
 # the developers to assist with development of Home Assistant.
 # For more information, please see:
 # https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+
 updater:
-  # Optional, allows Home Assistant developers to focus on popular components.
-  # include_used_components: true
+  reporting: False
 
 # Discover some devices automatically
 discovery:
@@ -49,17 +40,25 @@ history:
 # View all events in a logbook
 logbook:
 
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Cloud
+cloud:
+
 telegram_bot:
   - platform: polling
     api_key: !secret telegram_bot_api
     allowed_chat_ids:
       - !secret telegram_bot_chat_ids
 
-# Example configuration.yaml entry
 recorder:
   exclude:
-#    domains:
-#      - automation
+    domains:
+      - automation
     entities:
       - sun.sun # Don't record sun data
       - sensor.time
@@ -91,12 +90,6 @@ zone:
   longitude: !secret longitude_work
   radius: 300
 
-# Enables a map showing the location of tracked devices
-map:
-
-# Track the sun
-sun:
-
 #mqtt:
 #  broker: 192.168.1.13
 #  port: 1883
@@ -113,16 +106,13 @@ xiaomi_aqara:
 tts:
   - platform: google
 
-# Cloud
-cloud:
-
-group: !include_dir_merge_named group/
 automation: !include_dir_merge_list automation/
-script: !include_dir_merge_named script/
-notify: !include_dir_merge_list notify/
-sensor: !include_dir_merge_list sensor/
-media_player: !include_dir_merge_list media_player/
 device_tracker: !include_dir_merge_list device_tracker/
+group: !include_dir_merge_named group/
+media_player: !include_dir_merge_list media_player/
+notify: !include_dir_merge_list notify/
+script: !include_dir_merge_named script/
+sensor: !include_dir_merge_list sensor/
 
 #logger:
 #  default: warning
