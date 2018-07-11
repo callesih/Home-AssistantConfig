@@ -1,0 +1,45 @@
+- alias: Telegram - Reply with Menu
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/menu'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: "{{ trigger.event.data.user_id }}"
+      message: "Commands..
+                [/help will list all available commands]"
+      keyboard: ["/temp, /info", "/status"]
+
+- alias: Telegram - Reply with Status
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/status'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: "{{ trigger.event.data.user_id }}"
+      message: "Commands.."
+      keyboard: ["/system, /temperature", "/menu"]
+
+- alias: Telegram - Reply with All Commands
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/help'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: "{{ trigger.event.data.user_id }}"
+      message: "All available commands"
+      data:
+        inline_keyboard:
+          - 'Lights:/lights, Status:/status, Security:/security'
+          - 'System:/system, Help:/help'
