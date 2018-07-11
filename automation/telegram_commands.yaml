@@ -9,8 +9,7 @@
     service: telegram_bot.send_message
     data_template:
       target: "{{ trigger.event.data.user_id }}"
-      message: "/devices\n/status see status of system\n
-                /help will list all available commands"
+      message: "Displays menu"
       keyboard: ["/info, /control, /help"]
 
 - alias: Telegram - Reply with status commands
@@ -24,7 +23,7 @@
     service: telegram_bot.send_message
     data_template:
       target: "{{ trigger.event.data.user_id }}"
-      message: "Show info commands"
+      message: "Displays info commands"
       keyboard: ["/system, /temperature, /lights", "/menu"]
 
 - alias: Telegram - Reply with control commands
@@ -38,7 +37,7 @@
     service: telegram_bot.send_message
     data_template:
       target: "{{ trigger.event.data.user_id }}"
-      message: "Show control commands"
+      message: "Displays control commands"
       keyboard: ["/not available, /not available", "/not available"]
 
 - alias: Telegram - Reply with all available commands
