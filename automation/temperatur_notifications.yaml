@@ -1,0 +1,10 @@
+- alias: Teperatur Balcony
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.temperature_158d00020ef44d
+    above: 25
+  action:
+    service: notify.telegram
+    data_template:
+      title: "INFO"
+      message: "Temperatur on balcony is {{ states.sensor.temperature_158d00020ef44d.state }}°C"

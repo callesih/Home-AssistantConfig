@@ -9,7 +9,7 @@
     data:
       message: 'Time for bed'
       target: device/HTC10
-      
+
 
 #- alias: Calle_home
 #  trigger:
@@ -55,62 +55,6 @@
     - service: light.turn_off
       entity_id: light.gateway_light_7811dcb8f3c0
       
-      
-- alias: Teperatur balcony
-  trigger:
-    platform: numeric_state
-    entity_id: sensor.temperature_158d00020ef44d
-    above: 25
-  action:
-    service: notify.telegram
-    data_template:
-      title: "INFO"
-      message: "Temperatur on balcony is {{ states.sensor.temperature_158d00020ef44d.state }}°C"
-
-- alias: Telegram - Reply with Menu
-  initial_state: on
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/menu'
-  action:
-    service: telegram_bot.send_message
-    data_template:
-      target: "{{ trigger.event.data.user_id }}"
-      message: "Commands.."
-      keyboard: ["/temp, /temperature", "/status"]
-
-- alias: Telegram - Reply with status
-  initial_state: on
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/status'
-  action:
-    service: telegram_bot.send_message
-    data_template:
-      target: "{{ trigger.event.data.user_id }}"
-      message: "System is online!
-          Last system reboot was on {{ states('sensor.last_boot') }}"
-   
-   
-- alias: Telegram - Reply with temperatur
-  initial_state: on
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/temperature'
-  action:
-    service: telegram_bot.send_message
-    data_template:
-      target: "{{ trigger.event.data.user_id }}"
-      message: "Temperature Balcony: {{ states.sensor.temperature_158d00020ef44d.state }}°C
-          Temperature Living room: {{ states.sensor.temperature_158d00020ef826.state }}°C
-          Temperature Bedroom: {{ states.sensor.temperature_158d0002281dbd.state }}°C"
- 
 - alias: If door opens
   trigger:
     platform: state
@@ -122,4 +66,3 @@
     data_template:
       title: "INFO"
       message: "Door opens"
- 
