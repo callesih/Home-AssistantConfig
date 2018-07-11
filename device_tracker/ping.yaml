@@ -1,0 +1,5 @@
+- platform: ping
+  interval_seconds: 15
+  consider_home: 180
+  hosts:
+    Calle: 192.168.1.6

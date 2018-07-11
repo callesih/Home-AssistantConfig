@@ -1,0 +1,4 @@
+#  - platform: bluetooth_tracker
+#    interval_seconds: 10
+#    consider_home: 180
+#    track_new_devices: false

@@ -1,0 +1,20 @@
+#  - platform: vasttrafik
+#    key: !secret vasttrafik_key
+#    secret: !secret vasttrafik_secret
+#    departures:
+#      - name: Calle Work
+#        from: Lindholmen
+#        heading: Volvo Torslanda PV
+#        delay: 1
+#      - name: Malin School 16
+#        from: Lindholmen
+#        heading: Chalmers
+#        delay: 1
+#      - name: Malin School 55
+#        from: Lindholmsplatsen
+#        heading: Sven Hultins Plats
+#        delay: 1
+#      - name: City
+#        from: Lindholmen
+#        heading: Nordstan
+#        delay: 1
