@@ -4,7 +4,7 @@
     platform: event
     event_type: telegram_command
     event_data:
-      command: '/status'
+      command: '/system'
   action:
     service: telegram_bot.send_message
     data_template:
