@@ -40,4 +40,4 @@
     service: telegram_bot.send_message
     data_template:
       target: "{{ trigger.event.data.user_id }}"
-      message: "Gateway light: {{ states.light.gateway_light_7811dcb8f3c0.state }}"
+      message: "Gateway light is: {{ states.light.gateway_light_7811dcb8f3c0.state }}"
