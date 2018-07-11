@@ -9,10 +9,10 @@
     service: telegram_bot.send_message
     data_template:
       target: "{{ trigger.event.data.user_id }}"
-      message: "System is online!
-          Last system reboot was on {{ states('sensor.last_boot') }}
-          System processor use {{ states('sensor.processor_use') }}
-          Free system memory {{ states('sensor.memory_free') }}"
+      message: "System is online!\n
+          Last system reboot was on {{ states('sensor.last_boot') }}\n
+          System processor use {{ states('sensor.processor_use') }} %\n
+          Free system memory {{ states('sensor.memory_free') }} MiB"
 
 - alias: Telegram - Reply with temperatur
   initial_state: on
@@ -25,8 +25,8 @@
     service: telegram_bot.send_message
     data_template:
       target: "{{ trigger.event.data.user_id }}"
-      message: "Temperature Balcony: {{ states.sensor.temperature_158d00020ef44d.state }}°C
-          Temperature Living room: {{ states.sensor.temperature_158d00020ef826.state }}°C
+      message: "Temperature Balcony: {{ states.sensor.temperature_158d00020ef44d.state }}°C\n
+          Temperature Living room: {{ states.sensor.temperature_158d00020ef826.state }}°C\n
           Temperature Bedroom: {{ states.sensor.temperature_158d0002281dbd.state }}°C"
 
 - alias: Telegram - Reply with status of lights
@@ -40,4 +40,4 @@
     service: telegram_bot.send_message
     data_template:
       target: "{{ trigger.event.data.user_id }}"
-      message: "Gateway light: {{ states.ight.gateway_light_7811dcb8f3c0.state }}"
+      message: "Gateway light: {{ states.light.gateway_light_7811dcb8f3c0.state }}"
