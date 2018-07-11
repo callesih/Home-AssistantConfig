@@ -1,4 +1,4 @@
-- alias: Telegram - Reply with Menu
+- alias: Telegram - Reply with menu commands
   initial_state: on
   trigger:
     platform: event
@@ -9,25 +9,40 @@
     service: telegram_bot.send_message
     data_template:
       target: "{{ trigger.event.data.user_id }}"
-      message: "Commands.. \n
-                [/help will list all available commands]"
-      keyboard: ["/temp, /info", "/status"]
+      message: "/devices \n
+                /status see status of system\n
+                /help will list all available commands"
+      keyboard: ["/info, /control, /help"]
 
-- alias: Telegram - Reply with Status
+- alias: Telegram - Reply with status commands
   initial_state: on
   trigger:
     platform: event
     event_type: telegram_command
     event_data:
-      command: '/status'
+      command: '/info'
   action:
     service: telegram_bot.send_message
     data_template:
       target: "{{ trigger.event.data.user_id }}"
       message: "Commands.."
-      keyboard: ["/system, /temperature", "/help", "/menu"]
+      keyboard: ["/system, /temperature, /lights", "/menu"]
 
-- alias: Telegram - Reply with All Commands
+- alias: Telegram - Reply with control commands
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/control'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: "{{ trigger.event.data.user_id }}"
+      message: "Commands.."
+      keyboard: ["/not available, /not available", "/not available"]
+
+- alias: Telegram - Reply with all available commands
   initial_state: on
   trigger:
     platform: event
@@ -38,8 +53,10 @@
     service: notify.telegram
     data_template:
       target: "{{ trigger.event.data.user_id }}"
-      message: "All available commands"
-      data:
-        inline_keyboard:
-          - 'System:/system, Status:/status, Temperature:/temperature'
-          - 'Help:/help'
+      message: "/control
+                /info
+                /lights
+                /menu
+                /system
+                /temperature
+                "
