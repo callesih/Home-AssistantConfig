@@ -9,7 +9,7 @@
     service: telegram_bot.send_message
     data_template:
       target: "{{ trigger.event.data.user_id }}"
-      message: "Displays menu"
+      message: "Display menu"
       keyboard: ["/info, /control, /help"]
 
 - alias: Telegram - Reply with status commands
