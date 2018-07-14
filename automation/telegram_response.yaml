@@ -1,0 +1,43 @@
+- alias: Telegram - Reply with system status
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/system'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: "{{ trigger.event.data.user_id }}"
+      message: "System is online!\n
+          Last system reboot was on {{ states('sensor.last_boot') }}\n
+          System processor use {{ states('sensor.processor_use') }} %\n
+          Free system memory {{ states('sensor.memory_free') }} MiB"
+
+- alias: Telegram - Reply with temperatur
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/temperature'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: "{{ trigger.event.data.user_id }}"
+      message: "Temperature Balcony: {{ states.sensor.temperature_158d00020ef44d.state }}°C\n
+          Temperature Living room: {{ states.sensor.temperature_158d00020ef826.state }}°C\n
+          Temperature Bedroom: {{ states.sensor.temperature_158d0002281dbd.state }}°C"
+
+- alias: Telegram - Reply with status of lights
+  initial_state: on
+  trigger:
+    platform: event
+    event_type: telegram_command
+    event_data:
+      command: '/lights'
+  action:
+    service: telegram_bot.send_message
+    data_template:
+      target: "{{ trigger.event.data.user_id }}"
+      message: "Gateway light is: {{ states.light.gateway_light_7811dcb8f3c0.state }}"

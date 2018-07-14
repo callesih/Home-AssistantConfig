@@ -1,0 +1,21 @@
+- alias: High temperature on balcony
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.temperature_158d00020ef44d
+    above: 25
+  action:
+    service: notify.telegram
+    data_template:
+      title: "info"
+      message: "Temperature on balcony is {{ states.sensor.temperature_158d00020ef44d.state }}°C"
+
+- alias: Low temperature on balcony
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.temperature_158d00020ef44d
+    below: 0
+  action:
+    service: notify.telegram
+    data_template:
+      title: "info"
+      message: "Temperature on balcony is {{ states.sensor.temperature_158d00020ef44d.state }}°C"

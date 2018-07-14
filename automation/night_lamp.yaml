@@ -1,0 +1,41 @@
+- alias: If there is motion and night turn on the gateway light
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001f9d45b
+    from: 'off'
+    to: 'on'
+  condition:
+    condition: or
+    conditions:
+      - condition: sun
+        after: sunset
+        after_offset: "00:30:00"
+      - condition: sun
+        before: sunrise
+        before_offset: "00:30:00"
+  action:
+    - service: light.turn_on
+      entity_id: light.gateway_light_7811dcb8f3c0
+      data:
+        brightness: 4
+
+- alias: If there no motion for 1 minutes turn off the gateway light
+  trigger:
+    platform: state
+    entity_id: binary_sensor.motion_sensor_158d0001f9d45b
+    from: 'on'
+    to: 'off'
+    for:
+      seconds: 5
+  condition:
+    condition: or
+    conditions:
+      - condition: sun
+        after: sunset
+        after_offset: "00:30:00"
+      - condition: sun
+        before: sunrise
+        before_offset: "00:30:00"
+  action:
+    - service: light.turn_off
+      entity_id: light.gateway_light_7811dcb8f3c0

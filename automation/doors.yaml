@@ -1,0 +1,25 @@
+- alias: Front door opens
+  trigger:
+    platform: state
+    entity_id: binary_sensor.door_window_sensor_158d0001fa3524
+    from: 'off'
+    to: 'on'
+  action:
+    service: notify.telegram
+    data_template:
+      title: "info"
+      message: "Front door opens"
+
+- alias: If front door is open more then 5 mins
+  trigger:
+    platform: state
+    entity_id: binary_sensor.door_window_sensor_158d0001fa3524
+    from: 'off'
+    to: 'on'
+    for:
+      minutes: 5
+  action:
+    service: notify.telegram
+    data_template:
+      title: "info"
+      message: "Front door opens"
