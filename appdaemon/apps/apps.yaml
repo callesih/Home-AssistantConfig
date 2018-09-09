@@ -2,10 +2,10 @@ hello_world:
   module: hello
   class: HelloWorld
 
-bedroom_motion_light:
+evening_light:
   module: evening_lamp
   class: EveningLamp
   light: light.tradfri_bulb_e14_w_opch_400lm
-  brightness: 200
-  sunset_offset: -900
-  off_time: 23:30:00
+  brightness: 147
+#  sunset_offset: 20:25:00
+#  off_time: 20:29:30
