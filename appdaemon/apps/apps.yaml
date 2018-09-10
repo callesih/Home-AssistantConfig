@@ -3,9 +3,9 @@ hello_world:
   class: HelloWorld
 
 evening_light:
-  module: evening_lamp
-  class: EveningLamp
+  module: evening_light
+  class: EveningLight
   light: light.tradfri_bulb_e14_w_opch_400lm
   brightness: 147
-#  sunset_offset: 20:25:00
-#  off_time: 20:29:30
+  off_time: '23:00:00'
+  sunset_offset: +450
