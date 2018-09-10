@@ -22,6 +22,8 @@ living_room:
 #    - media_player.chromecast  #moved to media view
     - sensor.temperature_158d00020ef826
     - sensor.humidity_158d00020ef826   
+    - light.tradfri_bulb_e14_w_opch_400lm
+    - light.tradfri_bulb_e27_ws_opal_980lm
 bedroom:
   name: Bedroom
   entities:

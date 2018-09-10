@@ -31,3 +31,9 @@ binary_sensor.door_window_sensor_158d0001fa3524:
  # Gateway light #
 light.gateway_light_7811dcb8f3c0:
   friendly_name: Gateway light
+
+## Trådfri ##
+light.tradfri_bulb_e14_w_opch_400lm:
+  friendly_name: Living room window
+light.tradfri_bulb_e27_ws_opal_980lm:
+  friendly_name: Dining table
