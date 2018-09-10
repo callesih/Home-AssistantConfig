@@ -1,14 +1,11 @@
 import appdaemon.plugins.hass.hassapi as hass
 import datetime
 
-class EveningLamp(hass.Hass):
+class EveningLight(hass.Hass):
 
   def initialize(self):
-#    time_off = self.parse_time(self.args["off_time"])
-    time_on = datetime.time(20, 00, 0)
-    time_off = datetime.time(23, 00, 00)
-#    self.run_at_sunset(self.light_on, offset=300)
-    self.run_daily(self.light_on, time_on)
+    time_off = self.parse_time(self.args["off_time"])
+    self.run_at_sunset(self.light_on, offset=int(self.args["sunset_offset"]))
     self.run_daily(self.light_off, time_off)
 
   def light_on(self, kwargs):
