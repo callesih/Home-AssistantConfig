@@ -1,6 +1,15 @@
-hello_world:
-  module: hello
-  class: HelloWorld
+hello_world:            #any name you like.
+  module: hello         #that was the name we used for our py file
+  class: HelloWorld     #and this was the name from our class
+
+bedroom_motion_light:
+  module: night_lamp
+  class: NightLamp
+  motion_sensor: binary_sensor.motion_sensor_158d0001f9d45b
+  light: light.gateway_light_7811dcb8f3c0
+  brightness: 5
+  constrain_start_time: sunset + 00:30:00
+  constrain_end_time: sunrise - 00:15:00
 
 evening_light:
   module: evening_light
