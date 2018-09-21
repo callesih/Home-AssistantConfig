@@ -110,7 +110,7 @@ automation: !include_dir_merge_list automation/
 device_tracker: !include_dir_merge_list device_tracker/
 group: !include_dir_merge_named group/
 media_player: !include_dir_merge_list media_player/
-cast: !include_dir_merge_named /googel_cast
+#cast: !include_dir_merge_named /googel_cast
 notify: !include_dir_merge_list notify/
 script: !include_dir_merge_named script/
 sensor: !include_dir_merge_list sensor/
