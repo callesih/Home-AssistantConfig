@@ -18,3 +18,4 @@ evening_light:
   brightness: 147
   off_time: '23:00:00'
   sunset_offset: +450
+  constrain_input_boolean: input.boolean.vacation_mode,off
