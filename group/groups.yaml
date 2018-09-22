@@ -54,6 +54,11 @@ system_info:
     - sensor.processor_use
     - sensor.last_boot
     - sensor.disk_free_
+modes:
+  name: Modes
+  entities:
+    - input_boolean.guests_mode
+    - input_boolean.vacation_mode
  
 #environment:
 #  name: Temperature & Humidity

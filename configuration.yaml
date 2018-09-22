@@ -49,6 +49,12 @@ sun:
 # Cloud
 cloud:
 
+input_boolean:
+  vacation_mode:
+    name: Vacation mode
+  guests_mode:
+    name: Guest mode
+
 telegram_bot:
   - platform: polling
     api_key: !secret telegram_bot_api
