@@ -3,14 +3,31 @@ import appdaemon.plugins.hass.hassapi as hass
 class XiaomiSwitch(hass.Hass):
 
   def initialize(self):
-    self.log("Start xiaomi_switch")
-    self.listen_event(self.one_click, event = None, entity_id = self.args["switch"]):
+    self.listen_event(self.click, event = "click", entity_id = self.args["switch"])
 
-  def one_click(self, event_name, data, kwargs):
-    self.log("Ett klick, event={}, data={}".format(event_name, data))
+  def click(self, event_name, data, kwargs):
+    self.log("Ett klick registerat")
+    click_type = data["click_type"]
 
-  def one_click(self, event_name, data, kwargs):
-    self.log("Två klick")
+    if click_type == "single":
+      self.single()
+    elif click_type == "double":
+      self.double()
+    elif click_type == "long_click_press":
+      self.long_click()
+    elif click_type == "hold":
+      self.release_press()
+    else:
+      self.log("unknown click type={}".format(click_type))
 
-  def one_click(self, event_name, data, kwargs):
-    self.log("Lång klick")
+  def single(self):
+    self.log("single click")
+
+  def double(self):
+    self.log("double click")
+
+  def long_click(self):
+    self.log("long click")
+
+  def release_press(self):
+    self.log("release press")
