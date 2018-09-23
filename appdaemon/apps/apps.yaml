@@ -19,3 +19,9 @@ evening_light:
   off_time: '23:00:00'
   sunset_offset: +450
   constrain_input_boolean: input.boolean.vacation_mode,off
+
+
+xiaomi_switch1:
+  module: xiaomi_switch
+  class: XiaomiSwitch
+  switch: binary_sensor.switch_158d0001e6571d
