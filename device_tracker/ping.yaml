@@ -1,5 +1,6 @@
-- platform: ping
-  interval_seconds: 15
-  consider_home: 180
-  hosts:
-    Calle: 192.168.1.6
+#- platform: ping
+#  interval_seconds: 120
+#  consider_home: 600
+#  hosts:
+#    Xiaomi_aqara: 192.168.1.18
+#    Tradfri: 192.168.1.17
