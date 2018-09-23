@@ -1,0 +1,4 @@
+exclude:
+    domains:
+      - media_player
+#    entities:

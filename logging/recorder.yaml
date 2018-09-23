@@ -1,0 +1,25 @@
+  exclude:
+    domains:
+      - group
+      - weblink
+    entities:
+      - sun.sun # Don't record sun data
+      - sensor.time
+      - sensor.city
+      - sensor.calle_work
+      - sensor.malin_school_16
+      - sensor.malin_school_55
+      - sensor.weather_symbol
+#      - group.vasttrafik
+#      - group.hall
+#      - group.living_room
+#      - group.bedroom
+#      - group.all_devices
+#      - group.modes
+#      - group.weblinks
+#      - group.all_lights
+#      - group.system_info
+      - script.test_telegram
+      - script.test_pushbullet
+      - weblink.spotify_web
+      - weblink.google_calendar
