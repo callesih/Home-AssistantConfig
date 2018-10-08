@@ -5,5 +5,6 @@
     - temperature
     - symbol
     - windSpeed
+    - cloudiness
+    - lowClouds
 #     - humidity
-#     - cloudiness
