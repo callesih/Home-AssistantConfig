@@ -7,16 +7,14 @@ class MorningLight(hass.Hass):
     self.log("MorningLight init")
 
     time_off = self.parse_time(self.args["constrain_end_time"])
-    self.listen_state(self.motion, self.args["motion_sensor"])
+    self.listen_state(self.motion, self.args["motion_sensor"], new = "on")
     self.run_daily(self.light_off, time_off)
 
   def motion(self, entity, attribute, old, new, kwargs):
-    state = self.get_state(self.args["light"])
+    self.state = self.get_state(self.args["light"])
 
-    if state == "off":
-      if new == "on" and old == "off":
-        self.turn_on(self.args["light"], brightness=self.args["brightness"])
+    if self.state == "off":
+      self.turn_on(self.args["light"], brightness=self.args["brightness"])
 
   def light_off(self, kwargs):
     self.turn_off(self.args["light"])
-

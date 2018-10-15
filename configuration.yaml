@@ -54,6 +54,12 @@ input_boolean:
     name: Vacation mode
   guests_mode:
     name: Guest mode
+  morning:
+    name: Morning
+  day:
+    name: Day
+  evening:
+    name: Evening
 
 telegram_bot:
   - platform: polling

@@ -11,8 +11,10 @@ class EveningLight(hass.Hass):
     self.run_daily(self.light_off, time_off)
 
   def light_on(self, kwargs):
+    self.log("EveningLight: turn lamp on")
     self.turn_on(self.args["light"], brightness=self.args["brightness"])
 
   def light_off(self, kwargs):
+    self.log("EveningLight: turn lamp off")
     self.turn_off(self.args["light"])
 

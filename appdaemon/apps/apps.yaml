@@ -2,16 +2,24 @@ hello_world:            #any name you like.
   module: hello         #that was the name we used for our py file
   class: HelloWorld     #and this was the name from our class
 
-night_motion_light:
-  module: night_light
-  class: NightLight
+night_motion_light_GW:
+  module: night_light_motion
+  class: NightLightMotion
   motion_sensor: binary_sensor.motion_sensor_158d0001f9d45b
-  light1: light.gateway_light_7811dcb8f3c0
-  light2: light.tradfri_bulb_e14_w_opch_400lm
-  brightness1: 5
-  brightness2: 100
+  light: light.gateway_light_7811dcb8f3c0
+  brightness: 5
   constrain_start_time: sunset + 00:30:00
   constrain_end_time: sunrise - 00:15:00
+
+night_motion_light_window:
+  module: night_light_motion
+  class: NightLightMotion
+  motion_sensor: binary_sensor.motion_sensor_158d0001f9d45b
+  light: light.tradfri_bulb_e14_w_opch_400lm
+  brightness1: 100
+  constrain_start_time: '00:00:00'
+  constrain_end_time: '05:59:00'
+  constrain_input_boolean: input_boolean.guests_mode,off
 
 evening_light:
   module: evening_light
@@ -33,6 +41,7 @@ morning_light:
   constrain_days: mon,tue,wed,thu,fri
   constrain_input_boolean: input.boolean.vacation_mode,off
   constrain_input_boolean: input_boolean.guests_mode,off
+#update to turn off light when all have left the house
 
 xiaomi_switch1:
   module: xiaomi_switch
