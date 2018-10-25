@@ -57,3 +57,12 @@ xiaomi_switch1:
   module: xiaomi_switch
   class: XiaomiSwitch
   switch: binary_sensor.switch_158d0001e6571d
+
+HouseModes:
+  module: house_modes
+  class: HouseModes
+  motion_sensor: binary_sensor.motion_sensor_158d0001f9d45b
+  constrain_days: mon,tue,wed,thu,fri
+  morning: "06:00:00"
+  day: "08:00:00"
+  evening: "18:00:00"
