@@ -5,15 +5,23 @@ class NightLightMotion(hass.Hass):
 
     def initialize(self):
         self.log("NightLight Init")
-    
-        time_off = self.parse_time(self.args["constrain_end_time"])
-        self.listen_state(self.motion, self.args["motion_sensor"])
+
+        time_off = self.parse_time(self.args["deactivate_time"])
+        time_off = (datetime.datetime.combine(datetime.date(1, 1, 1), time_off) + datetime.timedelta(minutes=2)).time()
+        
+#        time_off = self.parse_time(self.args["constrain_end_time"])
+        self.listen_state(self.motion,
+                          self.args["motion_sensor"],
+                          constrain_start_time = self.args["activate_time"],
+                          constrain_end_time = self.args["deactivate_time"])
+
         self.run_daily(self.light_off, time_off)
         self.log("NightLight: off time {} ".format(time_off))
     
     def motion(self, entity, attribute, old, new, kwargs):
         if new == "on" and old == "off":
             self.turn_on(self.args["light"], brightness=self.args["brightness"])
+            self.log("NightLight Turn on lamp")
         elif new == "off" and old == "on":
             self.turn_off(self.args["light"])
         else:
@@ -21,5 +29,6 @@ class NightLightMotion(hass.Hass):
     
     def light_off(self, kwargs):
         state = self.get_state(self.args["light"])
+        self.log("NightLight Turn lamp of constrain_end_time, state lamp = {}".format(state))
         if state == "on":
             self.turn_off(self.args["light"])

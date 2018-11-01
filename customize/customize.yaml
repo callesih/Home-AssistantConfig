@@ -37,3 +37,7 @@ light.tradfri_bulb_e14_w_opch_400lm:
   friendly_name: Living room window
 light.tradfri_bulb_e27_ws_opal_980lm:
   friendly_name: Dining table
+light.fonster:
+  friendly_name: Group fonster
+light.vardagsrum:
+  friendly_name: Group vardagsrum
