@@ -1,7 +1,7 @@
 import appdaemon.plugins.hass.hassapi as hass
 import datetime
 
-class EveningLight(hass.Hass):
+class TriggerOnSunset(hass.Hass):
 
     def initialize(self):
         self.log("EveningLight Init")

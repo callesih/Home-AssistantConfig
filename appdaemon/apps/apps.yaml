@@ -27,8 +27,8 @@ night_motion_light_window:
   #constrain_input_boolean: sun is down
 
 evening_light:
-  module: evening_light
-  class: EveningLight
+  module: trigger_on_sunset
+  class: TriggerOnSunset
   light: light.tradfri_bulb_e14_w_opch_400lm
   brightness: 147
   off_time: "22:30:00"
