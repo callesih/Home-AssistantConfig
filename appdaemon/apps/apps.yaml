@@ -26,7 +26,7 @@ night_motion_light_window:
   constrain_input_boolean: input_boolean.guests_mode,off
   #constrain_input_boolean: sun is down
 
-evening_light:
+evening_light_week:
   module: trigger_on_sunset
   class: TriggerOnSunset
   light: light.tradfri_bulb_e14_w_opch_400lm
@@ -34,6 +34,17 @@ evening_light:
   off_time: "22:30:00"
   sunset_offset: +450
   constrain_input_boolean: input.boolean.vacation_mode,off
+  constrain_days: mon,tue,wed,thu,sun
+
+evening_light_weekend:
+  module: trigger_on_sunset
+  class: TriggerOnSunset
+  light: light.tradfri_bulb_e14_w_opch_400lm
+  brightness: 147
+  off_time: "23:30:00"
+  sunset_offset: +450
+  constrain_input_boolean: input.boolean.vacation_mode,off 
+  constrain_days: fri,sat
 
 morning_light:
   module: morning_light
