@@ -10,7 +10,7 @@ night_motion_light_GW:
   brightness: 5
   activate_time: sunset + 00:30:00
   deactivate_time: sunrise - 00:15:00
-  constrain_start_time: "21:00:00"  #sunset + 00:30:00
+  #constrain_start_time: "21:00:00"  #sunset + 00:30:00
   #constrain_end_time: sunrise - 00:15:00
 
 night_motion_light_window:
@@ -46,8 +46,8 @@ morning_light:
   #constrain_start_time: '06:00:00'
   #constrain_end_time: '07:45:00'
   constrain_days: mon,tue,wed,thu,fri
-  constrain_input_boolean: input.boolean.vacation_mode,off
-  constrain_input_boolean: input_boolean.guests_mode,off
+  constrain_input_boolean: input.boolean.vacation_mode,off,input_boolean.guests_mode,off
+  #constrain_input_boolean: input_boolean.guests_mode,off
 #update to turn off light when all have left the house
 
 xiaomi_switch1:
