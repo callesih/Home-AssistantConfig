@@ -24,6 +24,8 @@ living_room:
     - sensor.humidity_158d00020ef826   
     - light.tradfri_bulb_e14_w_opch_400lm
     - light.tradfri_bulb_e27_ws_opal_980lm
+    #- switch.tradfri_control_outlet
+    - light.adventsljusstake
 bedroom:
   name: Bedroom
   entities:

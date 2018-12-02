@@ -53,6 +53,11 @@ ios:
 # Cloud
 cloud:
 
+light:
+  - platform: switch
+    name: Adventsljusstake
+    entity_id: switch.tradfri_control_outlet
+
 input_boolean:
   vacation_mode:
     name: Vacation mode
