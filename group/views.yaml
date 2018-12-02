@@ -15,6 +15,7 @@ default_view:
     - weblink.router
     - group.weblinks
     - sensor.temperature_158d00020ef826
+    - group.all_lights
 
 appartment_view:
   view: yes
