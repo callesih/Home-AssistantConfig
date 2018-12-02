@@ -8,7 +8,7 @@ default_view:
 #    - device_tracker.maliniphone
     - device_tracker.google_maps_108054089202607471767 #Malin
     - device_tracker.google_maps_105385772181593182046 #Calle
-    - device_tracker.ipad
+#    - device_tracker.ipad
     - group.weather
 #    - group.vasttrafik
     - sensor.weather_symbol
