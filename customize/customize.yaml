@@ -33,10 +33,15 @@ light.gateway_light_7811dcb8f3c0:
   friendly_name: Gateway light
 
 ## Trådfri ##
+## Lampor ##
 light.tradfri_bulb_e14_w_opch_400lm:
   friendly_name: Living room window
 light.tradfri_bulb_e27_ws_opal_980lm:
   friendly_name: Dining table
+## Outlet ##
+switch.tradfri_control_outlet:
+  friendly_name: Adventsljusstake
+## Grupper ##
 light.fonster:
   friendly_name: Group fonster
 light.vardagsrum:
