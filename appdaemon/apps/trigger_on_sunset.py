@@ -11,7 +11,10 @@ class TriggerOnSunset(hass.Hass):
         self.run_daily(self.light_off, time_off)
 
     def light_on(self, kwargs):
-        self.turn_on(self.args["light"], brightness=self.args["brightness"])
+        if self.args["brightness"]:
+            self.turn_on(self.args["light"], brightness=self.args["brightness"])
+        else:
+            self.turn_on(self.args["light"])
 
     def light_off(self, kwargs):
         self.turn_off(self.args["light"])

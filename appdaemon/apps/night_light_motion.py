@@ -19,7 +19,10 @@ class NightLightMotion(hass.Hass):
     
     def motion(self, entity, attribute, old, new, kwargs):
         if new == "on" and old == "off":
-            self.turn_on(self.args["light"], brightness=self.args["brightness"])
+            if self.args["brightness"]:
+                self.turn_on(self.args["light"], brightness=self.args["brightness"])
+            else:
+                self.turn_on(self.args["light"])
             self.log("NightLight Turn on lamp")
         elif new == "off" and old == "on":
             self.turn_off(self.args["light"])
