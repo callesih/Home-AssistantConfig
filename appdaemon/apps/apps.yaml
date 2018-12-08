@@ -31,58 +31,6 @@ night_motion_light_adventsljusstake:
   deactivate_time: "05:55:00"
   constrain_input_boolean: input_boolean.guests_mode,off
 
-evening_light_week:
-  module: trigger_on_sunset
-  class: TriggerOnSunset
-  light: light.tradfri_bulb_e14_w_opch_400lm
-  brightness: 147
-  off_time: "22:30:00"
-  sunset_offset: +450
-  constrain_input_boolean: input.boolean.vacation_mode,off
-  constrain_days: mon,tue,wed,thu,sun
-
-evening_light_week_adventsljusstake:
-  module: trigger_on_sunset
-  class: TriggerOnSunset
-  light: light.adventsljusstake
-  brightness: 0
-  off_time: "22:30:00"
-  sunset_offset: +450
-  constrain_input_boolean: input.boolean.vacation_mode,off
-  constrain_days: mon,tue,wed,thu,sun
-
-evening_light_weekend:
-  module: trigger_on_sunset
-  class: TriggerOnSunset
-  light: light.tradfri_bulb_e14_w_opch_400lm
-  brightness: 147
-  off_time: "23:30:00"
-  sunset_offset: +450
-  constrain_input_boolean: input.boolean.vacation_mode,off 
-  constrain_days: fri,sat
-
-evening_light_weekend_adventsljusstake:
-  module: trigger_on_sunset
-  class: TriggerOnSunset
-  light: light.adventsljusstake
-  brightness: 0
-  off_time: "23:30:00"
-  sunset_offset: +450
-  constrain_input_boolean: input.boolean.vacation_mode,off 
-  constrain_days: fri,sat
-
-morning_light:
-  module: morning_light
-  class: MorningLight
-  light: light.tradfri_bulb_e14_w_opch_400lm
-  motion_sensor: binary_sensor.motion_sensor_158d0001f9d45b
-  brightness: 147
-  activate_time: "06:00:00"
-  deactivate_time: "07:40:00"
-  constrain_days: mon,tue,wed,thu,fri
-  constrain_input_boolean: input.boolean.vacation_mode,off,input_boolean.guests_mode,off
-
-
 xiaomi_switch1:
   module: xiaomi_switch
   class: XiaomiSwitch

@@ -1,0 +1,14 @@
+evening_window:
+  module: light_schedule_evening
+  class: LightScheduleEvening
+  light: light.tradfri_bulb_e14_w_opch_400lm
+  brightness: 147
+  sunset_offset: +450
+  constrain_input_boolean: input.boolean.vacation_mode,off
+
+evening_adventsljusstake:
+  module: light_schedule_evening
+  class: LightScheduleEvening
+  light: light.adventsljusstake
+  sunset_offset: +450
+  constrain_input_boolean: input.boolean.vacation_mode,off
