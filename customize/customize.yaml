@@ -12,37 +12,39 @@ group.all_lights:
 ## Xiaomi ##
  # Humidity    #
 sensor.humidity_158d0002281dbd:
-  friendly_name: Humidity_Bedroom
+  friendly_name: Luftfuktighet  #Humidity_Bedroom
 sensor.humidity_158d00020ef826:
-  friendly_name: Humidity_Living room
+  friendly_name: Luftfuktighet  #Humidity_Living room
 sensor.humidity_158d00020ef44d:
-  friendly_name: Humidity_Balcony
+  friendly_name: Luftfuktighet  #Humidity_Balcony
  # Temperature #
 sensor.temperature_158d0002281dbd:
-  friendly_name: Temperature_Bedroom
+  friendly_name: Temperatur  #Temperature_Bedroom
 sensor.temperature_158d00020ef826:
-  friendly_name: Temperature_Living room
+  friendly_name: Temperatur  #Temperature_Living room
 sensor.temperature_158d00020ef44d:
-  friendly_name: Temperature_Balcony
+  friendly_name: Temperatur  #Temperature_Balcony
  # Binary sensor #
 binary_sensor.door_window_sensor_158d0001fa3524:
-  friendly_name: Front Door
+  friendly_name: "Ytterdörr"  #Front Door
   icon: mdi:door
+binary_sensor.motion_sensor_158d0001f9d45b:
+  friendly_name: "Rörelsesensor sovrum"
  # Gateway light #
 light.gateway_light_7811dcb8f3c0:
-  friendly_name: Gateway light
+  friendly_name: Xiaomi gateway  #light
 
 ## Trådfri ##
 ## Lampor ##
 light.tradfri_bulb_e14_w_opch_400lm:
-  friendly_name: Living room window
+  friendly_name: "Fönsterlampa"
 light.tradfri_bulb_e27_ws_opal_980lm:
-  friendly_name: Dining table
+  friendly_name: Matbord
 ## Outlet ##
 switch.tradfri_control_outlet:
   friendly_name: Adventsljusstake
 ## Grupper ##
 light.fonster:
-  friendly_name: Group fonster
+  friendly_name: "IKEA group fönster"
 light.vardagsrum:
-  friendly_name: Group vardagsrum
+  friendly_name: IKEA group vardagsrum

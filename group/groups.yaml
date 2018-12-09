@@ -1,6 +1,6 @@
 #### GROUPS / CARDS ####
 weather:
-  name: Weather
+  name: "Väder"
   entities: 
     - sensor.weather_wind_speed
     - sun.sun
@@ -17,28 +17,31 @@ vasttrafik:
     - sensor.malin_school_55
   
 living_room:
-  name: Living room
+  name: Vardagsrum
+  control: hidden
   entities:
-#    - media_player.chromecast  #moved to media view
     - sensor.temperature_158d00020ef826
     - sensor.humidity_158d00020ef826   
     - light.tradfri_bulb_e14_w_opch_400lm
     - light.tradfri_bulb_e27_ws_opal_980lm
-    #- switch.tradfri_control_outlet
-    - light.adventsljusstake
+    - light.adventsljusstake  #switch.tradfri_control_outlet
 bedroom:
-  name: Bedroom
+  name: Sovrum
+  control: hidden
   entities:
     - sensor.temperature_158d0002281dbd  
     - sensor.humidity_158d0002281dbd 
     - light.gateway_light_7811dcb8f3c0
+    - binary_sensor.motion_sensor_158d0001f9d45b
 hall:
   name: Hall
+  control: hidden
   entities:
     - binary_sensor.door_window_sensor_158d0001fa3524
 
 balcony:
-  name: Balcony
+  name: Balkong
+  control: hidden
   entities:
     - sensor.temperature_158d00020ef44d
     - sensor.humidity_158d00020ef44d  
@@ -61,13 +64,3 @@ modes:
   entities:
     - input_boolean.guests_mode
     - input_boolean.vacation_mode
- 
-#environment:
-#  name: Temperature & Humidity
-#  entities:
-#    - sensor.temperature_158d0002281dbd  
-#    - sensor.humidity_158d0002281dbd
-#    - sensor.temperature_158d00020ef826
-#    - sensor.humidity_158d00020ef826
-#    - sensor.temperature_158d00020ef44d
-#    - sensor.humidity_158d00020ef44d  

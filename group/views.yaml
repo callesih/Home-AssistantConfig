@@ -8,7 +8,6 @@ default_view:
 #    - device_tracker.maliniphone
     - device_tracker.google_maps_108054089202607471767 #Malin
     - device_tracker.google_maps_105385772181593182046 #Calle
-#    - device_tracker.ipad
     - group.weather
 #    - group.vasttrafik
     - sensor.weather_symbol
@@ -26,22 +25,6 @@ appartment_view:
     - group.hall
     - group.environment
     - group.balcony
-    
-#living_room_view:
-#  view: yes
-#  name: Living Room
-#  entities:
-#    - group.living_room
-
-#bedroom_view:
-#  view: yes
-#  name: Bedroom
-#  entities:
-
-#hall_view:
-#  view: yes
-#  name: Hall
-#  entities:
 
 media_view:
   view: yes
