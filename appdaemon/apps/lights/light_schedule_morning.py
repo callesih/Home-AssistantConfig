@@ -1,28 +1,29 @@
 import appdaemon.plugins.hass.hassapi as hass
 import datetime
 
+
 class LightScheduleMorning(hass.Hass):
     """
 
-    Exampel configuration:
-      module: light_schedule_evening
-      class: LightScheduleEvening
-      light: light.tradfri_bulb_e14_w_opch_400lm
-      brightness: 147
-      sunset_offset: +450
+    morning_light_week:
+      module: light_schedule_morning
+      class: LightScheduleMorning
+      motion_sensor: binary_sensor.motion_sensor_158d0001f9d45b
+      activate_time: "06:00:00"
+      deactivate_time: "07:35:00"
+      lights:
+        - light: light.entity
+        brightness: 147
+        - light: light.entity
 
     Arguments:
-      light: light enity to control
-      brightness: brightness level (optional)
-      susnet_offset: time in secons to offset action (optional)
+
     """
 
     def initialize(self):
         self.log("LightScheduleMorning init")
         self.triggered = False
-
         try:
-            self.light = self.args["light"]
             self.motion_sensor = self.args["motion_sensor"]
             self.activate_time = self.args["activate_time"]
             self.deactivate_time = self.args["deactivate_time"]
@@ -30,40 +31,60 @@ class LightScheduleMorning(hass.Hass):
             self.log("Argument not found : {}".format(e), level="ERROR")
             return
 
-        if "brightness" in self.args:
-            self.brightness = self.args["brightness"]
-        else:
-            self.brightness = 0
-
         time_off = self.parse_time(self.deactivate_time)
-        time_off = (datetime.datetime.combine(datetime.date(1, 1, 1), time_off) + datetime.timedelta(minutes=2)).time()
+        time_off = (datetime.datetime.combine(datetime.date(1, 1, 1),
+                    time_off) + datetime.timedelta(minutes=1)).time()
 
-        self.listen_state(self.motion,
-                          self.motion_sensor,
-                          new = "on",
-                          constrain_start_time=self.activate_time,
-                          constrain_end_time=self.deactivate_time)
+        if "lights" in self.args:
+            for light in self.args["lights"]:
 
-        self.run_daily(self.light_off, time_off)
-        self.log("light:{}, motion_sensor:{}, activate_time:{}, deactivate_time:{}, brightness:{}, time_off:{}\n"\
-                 .format(self.friendly_name(self.light),
-                 self.friendly_name(self.motion_sensor),
-                 self.activate_time,
-                 self.deactivate_time,
-                 self.brightness, time_off))
+                if "brightness" in light:
+                    brightness = light["brightness"]
+                else:
+                    brightness = 0
+
+                light = light["light"]
+                self.run_daily(self.light_off, time_off, light=light)
+                self.listen_state(self.motion,
+                                  self.motion_sensor,
+                                  new="on",
+                                  constrain_start_time=self.activate_time,
+                                  constrain_end_time=self.deactivate_time,
+                                  light=light,
+                                  brightness=brightness)
+
+                self.log("light:{}, motion_sensor:{}, activate_time:{},\
+                         deactivate_time:{}, brightness:{}, time_off:{}\n"
+                         .format(self.friendly_name(light),
+                                 self.friendly_name(self.motion_sensor),
+                                 self.activate_time,
+                                 self.deactivate_time,
+                                 brightness,
+                                 time_off))
+        else:
+            self.log("Argument not found : lights", level="ERROR")
+            return
 
     def motion(self, entity, attribute, old, new, kwargs):
-        self.state = self.get_state(self.light)
+        self.state = self.get_state(kwargs["light"])
 
-        if self.state == "off" and self.triggered == False:
-            if self.brightness:
-                self.turn_on(self.light, brightness=self.brightness)
+        if self.state == "off" and self.triggered is False:
+            if kwargs["brightness"]:
+                self.turn_on(kwargs["light"], brightness=kwargs["brightness"])
             else:
-                self.turn_on(self.light)
+                self.turn_on(kwargs["light"])
             self.triggered = True
-            self.log("\nLine: __line__, Function: __function__, \nMessage: Turn on {} with brightness {} \n"\
-                     .format(self.friendly_name(self.light), self.brightness))
+            self.log("\nLine: __line__,\
+                     Function: __function__,\
+                     \nMessage: Turn on {} with brightness {} \n"
+                     .format(self.friendly_name(kwargs["light"]),
+                             kwargs["brightness"]))
 
     def light_off(self, kwargs):
-        self.turn_off(self.light)
+        self.turn_off(kwargs["light"])
+        self.log("\nLine: __line__,\
+                 Function: __function__,\
+                 \nMessage: Turn off {}\n"
+                 .format(self.friendly_name(kwargs["light"])))
+
         self.triggered = False
