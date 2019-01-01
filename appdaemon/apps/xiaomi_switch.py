@@ -1,9 +1,10 @@
 import appdaemon.plugins.hass.hassapi as hass
 
+
 class XiaomiSwitch(hass.Hass):
 
     def initialize(self):
-        self.listen_event(self.click, event = "click", entity_id = self.args["switch"])
+        self.listen_event(self.click, event="xiaomi_aqara.click", entity_id=self.args["switch"])
     
     def click(self, event_name, data, kwargs):
         self.log("Ett klick registerat")
