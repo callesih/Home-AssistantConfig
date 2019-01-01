@@ -22,7 +22,6 @@ class LightScheduleMorning(hass.Hass):
 
     def initialize(self):
         self.log("LightScheduleMorning init")
-        self.triggered = False
         try:
             self.motion_sensor = self.args["motion_sensor"]
             self.activate_time = self.args["activate_time"]
@@ -53,8 +52,7 @@ class LightScheduleMorning(hass.Hass):
                                   light=light,
                                   brightness=brightness)
 
-                self.log("light:{}, motion_sensor:{}, activate_time:{},\
-                         deactivate_time:{}, brightness:{}, time_off:{}\n"
+                self.log("light:{}, motion_sensor:{}, activate_time:{}, deactivate_time:{}, brightness:{}, time_off:{}\n"
                          .format(self.friendly_name(light),
                                  self.friendly_name(self.motion_sensor),
                                  self.activate_time,
@@ -62,29 +60,24 @@ class LightScheduleMorning(hass.Hass):
                                  brightness,
                                  time_off))
         else:
-            self.log("Argument not found : lights", level="ERROR")
+            self.log("Argument not found: lights", level="ERROR")
             return
 
     def motion(self, entity, attribute, old, new, kwargs):
+        self.log("Line: __line__, Function: __function__")
         self.state = self.get_state(kwargs["light"])
 
-        if self.state == "off" and self.triggered is False:
+        if self.state == "off":
             if kwargs["brightness"]:
                 self.turn_on(kwargs["light"], brightness=kwargs["brightness"])
             else:
                 self.turn_on(kwargs["light"])
-            self.triggered = True
-            self.log("\nLine: __line__,\
-                     Function: __function__,\
-                     \nMessage: Turn on {} with brightness {} \n"
-                     .format(self.friendly_name(kwargs["light"]),
-                             kwargs["brightness"]))
+
+            self.log("Line: __line__, Function: __function__, Message: Turn on {} with brightness {}\n"
+                     .format(self.friendly_name(kwargs["light"]), kwargs["brightness"]))
 
     def light_off(self, kwargs):
+        self.log("Line: __line__, Function: __function__")
         self.turn_off(kwargs["light"])
-        self.log("\nLine: __line__,\
-                 Function: __function__,\
-                 \nMessage: Turn off {}\n"
+        self.log("Line: __line__, Function: __function__, Message: Turn off {}\n"
                  .format(self.friendly_name(kwargs["light"])))
-
-        self.triggered = False

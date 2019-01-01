@@ -1,6 +1,7 @@
 import appdaemon.plugins.hass.hassapi as hass
 import datetime
 
+
 class LightScheduleEvening(hass.Hass):
     """
 
@@ -45,17 +46,18 @@ class LightScheduleEvening(hass.Hass):
         self.run_daily(self.light_off,
                        time_off_weekend,
                        constrain_days="fri,sat")
-        self.log("light:{}, brightness:{}, offset:{}\n"\
-                 .format(self.light, self.brightness, sunset_offset))
+        self.log("light:{}, brightness:{}, offset:{}\n"
+                 .format(self.friendly_name(self.light), self.brightness, sunset_offset))
 
     def light_on(self, kwargs):
         if self.brightness:
             self.turn_on(self.light, brightness=self.brightness)
         else:
             self.turn_on(self.light)
-        self.log("\nLine: __line__, Function: __function__, \nMessage: Turn on {} with brightness {} \n"\
+        self.log("Line: __line__, Function: __function__, Message: Turn on {} with brightness {}\n"
                  .format(self.friendly_name(self.light), self.brightness))
+
     def light_off(self, kwargs):
         self.turn_off(self.light)
-        self.log("\nLine: __line__, Function: __function__, \nMessage: Turn off {}\n"\
+        self.log("Line: __line__, Function: __function__, Message: Turn off {}\n"
                  .format(self.friendly_name(self.light)))
