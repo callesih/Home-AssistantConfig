@@ -14,7 +14,7 @@
         entity_id: 'device_tracker.maliniphone'
         state: 'not_home'
   action:
-    service: notify.telegram
+    service: notify.calle
     data_template:
       title: "info"
       message: "Front door opens"
@@ -28,7 +28,7 @@
     for:
       minutes: 5
   action:
-    service: notify.telegram
+    service: notify.calle
     data_template:
       title: "info"
       message: "Front door opens"

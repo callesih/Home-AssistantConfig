@@ -4,7 +4,7 @@
     entity_id: sensor.temperature_158d00020ef44d
     above: 25
   action:
-    service: notify.telegram
+    service: notify.calle
     data_template:
       title: "info"
       message: "Temperature on balcony is {{ states.sensor.temperature_158d00020ef44d.state }}°C"
@@ -15,7 +15,7 @@
     entity_id: sensor.temperature_158d00020ef44d
     below: 0
   action:
-    service: notify.telegram
+    service: notify.calle
     data_template:
       title: "info"
       message: "Temperature on balcony is {{ states.sensor.temperature_158d00020ef44d.state }}°C"

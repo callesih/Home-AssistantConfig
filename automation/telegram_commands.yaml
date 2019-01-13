@@ -48,7 +48,7 @@
     event_data:
       command: '/help'
   action:
-    service: notify.telegram
+    service: notify.calle
     data_template:
       target: "{{ trigger.event.data.user_id }}"
       message: "/control\n

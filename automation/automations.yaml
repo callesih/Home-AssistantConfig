@@ -5,10 +5,9 @@
     minutes: 0
     seconds: 0
   action:
-    service: notify.pushbullet
+    service: notify.calle
     data:
       message: 'Time for bed'
-      target: device/HTC10
 
 
 #- alias: Calle_home
@@ -27,9 +26,9 @@
     platform: homeassistant
     event: start
   action:
-    - service: notify.telegram
+    - service: notify.calle
       data_template:
-        title: "info"
+        title: "Info"
         message: "Home Assistant has started."
 
 - alias: On shutdown
@@ -37,7 +36,7 @@
     platform: homeassistant
     event: shutdown
   action:
-    - service: notify.telegram
+    - service: notify.calle
       data_template:
-        title: "info"
+        title: "Info"
         message: "Home Assistant has shutdown."
