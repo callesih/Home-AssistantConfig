@@ -1,60 +1,60 @@
-- alias: Telegram - Reply with menu commands
-  initial_state: on
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/menu'
-  action:
-    service: telegram_bot.send_message
-    data_template:
-      target: "{{ trigger.event.data.user_id }}"
-      message: "Display menu"
-      keyboard: ["/info, /control, /help"]
-
-- alias: Telegram - Reply with status commands
-  initial_state: on
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/info'
-  action:
-    service: telegram_bot.send_message
-    data_template:
-      target: "{{ trigger.event.data.user_id }}"
-      message: "Displays info commands"
-      keyboard: ["/system, /temperature, /lights", "/menu"]
-
-- alias: Telegram - Reply with control commands
-  initial_state: on
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/control'
-  action:
-    service: telegram_bot.send_message
-    data_template:
-      target: "{{ trigger.event.data.user_id }}"
-      message: "Displays control commands"
-      keyboard: ["/not available, /not available", "/not available"]
-
-- alias: Telegram - Reply with all available commands
-  initial_state: on
-  trigger:
-    platform: event
-    event_type: telegram_command
-    event_data:
-      command: '/help'
-  action:
-    service: notify.calle
-    data_template:
-      target: "{{ trigger.event.data.user_id }}"
-      message: "/control\n
-                /info\n
-                /lights\n
-                /menu\n
-                /system\n
-                /temperature\n
-                "
+#- alias: Telegram - Reply with menu commands
+#  initial_state: on
+#  trigger:
+#    platform: event
+#    event_type: telegram_command
+#    event_data:
+#      command: '/menu'
+#  action:
+#    service: telegram_bot.send_message
+#    data_template:
+#      target: "{{ trigger.event.data.user_id }}"
+#      message: "Display menu"
+#      keyboard: ["/info, /control, /help"]
+#
+#- alias: Telegram - Reply with status commands
+#  initial_state: on
+#  trigger:
+#    platform: event
+#    event_type: telegram_command
+#    event_data:
+#      command: '/info'
+#  action:
+#    service: telegram_bot.send_message
+#    data_template:
+#      target: "{{ trigger.event.data.user_id }}"
+#      message: "Displays info commands"
+#      keyboard: ["/system, /temperature, /lights", "/menu"]
+#
+#- alias: Telegram - Reply with control commands
+#  initial_state: on
+#  trigger:
+#    platform: event
+#    event_type: telegram_command
+#    event_data:
+#      command: '/control'
+#  action:
+#    service: telegram_bot.send_message
+#    data_template:
+#      target: "{{ trigger.event.data.user_id }}"
+#      message: "Displays control commands"
+#      keyboard: ["/not available, /not available", "/not available"]
+#
+#- alias: Telegram - Reply with all available commands
+#  initial_state: on
+#  trigger:
+#    platform: event
+#    event_type: telegram_command
+#    event_data:
+#      command: '/help'
+#  action:
+#    service: notify.calle
+#    data_template:
+#      target: "{{ trigger.event.data.user_id }}"
+#      message: "/control\n
+#                /info\n
+#                /lights\n
+#                /menu\n
+#                /system\n
+#                /temperature\n
+#                "

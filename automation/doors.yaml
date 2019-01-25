@@ -1,34 +1,34 @@
-- alias: Front door opens
-  trigger:
-    platform: state
-    entity_id: binary_sensor.door_window_sensor_158d0001fa3524
-    from: 'off'
-    to: 'on'
-  condition:
-    condition: and
-    conditions:
-      - condition: state
-        entity_id: 'device_tracker.callehtc10'
-        state: 'not_home'
-      - condition: state
-        entity_id: 'device_tracker.maliniphone'
-        state: 'not_home'
-  action:
-    service: notify.calle
-    data_template:
-      title: "info"
-      message: "Front door opens"
-
-- alias: If front door is open more then 5 mins
-  trigger:
-    platform: state
-    entity_id: binary_sensor.door_window_sensor_158d0001fa3524
-    from: 'off'
-    to: 'on'
-    for:
-      minutes: 5
-  action:
-    service: notify.calle
-    data_template:
-      title: "info"
-      message: "Front door opens"
+#- alias: Front door opens
+#  trigger:
+#    platform: state
+#    entity_id: binary_sensor.door_window_sensor_158d0001fa3524
+#    from: 'off'
+#    to: 'on'
+#  condition:
+#    condition: and
+#    conditions:
+#      - condition: state
+#        entity_id: 'device_tracker.callehtc10'
+#        state: 'not_home'
+#      - condition: state
+#        entity_id: 'device_tracker.maliniphone'
+#        state: 'not_home'
+#  action:
+#    service: notify.calle
+#    data_template:
+#      title: "info"
+#      message: "Front door opens"
+#
+#- alias: If front door is open more then 5 mins
+#  trigger:
+#    platform: state
+#    entity_id: binary_sensor.door_window_sensor_158d0001fa3524
+#    from: 'off'
+#    to: 'on'
+#    for:
+#      minutes: 5
+#  action:
+#    service: notify.calle
+#    data_template:
+#      title: "info"
+#      message: "Front door opens"
