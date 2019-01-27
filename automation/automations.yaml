@@ -1,13 +1,11 @@
-- alias: Send message at a given time
-  trigger:
-    platform: time
-    hours: 22
-    minutes: 0
-    seconds: 0
-  action:
-    service: notify.calle
-    data:
-      message: 'Time for bed'
+#- alias: Send message at a given time
+#  trigger:
+#    platform: time
+#    at: "22:00:00"
+#  action:
+#    service: notify.calle
+#    data:
+#      message: 'Time for bed'
 
 
 #- alias: Calle_home

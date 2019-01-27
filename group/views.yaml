@@ -4,15 +4,9 @@ default_view:
   view: yes
   name: Home
   entities:
-#    - device_tracker.callehtc10
-#    - device_tracker.maliniphone
     - device_tracker.google_maps_108054089202607471767 #Malin
     - device_tracker.google_maps_105385772181593182046 #Calle
-    - group.weather
-#    - group.vasttrafik
     - sensor.weather_symbol
-    - weblink.router
-    - group.weblinks
     - sensor.temperature_158d00020ef826
     - group.all_lights
 

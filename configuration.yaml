@@ -36,6 +36,16 @@ logger: !include logging/logger.yaml
 updater:
   reporting: False
 
+custom_updater:
+  hide_sensor: False
+  track:
+    - components
+    - cards
+    - python_scripts
+  card_urls:
+    - https://raw.githubusercontent.com/kalkih/mini-graph-card/master/tracker.json
+    - https://raw.githubusercontent.com/kalkih/mini-media-player/master/tracker.json
+
 # Discover some devices automatically
 discovery:
 
@@ -58,6 +68,7 @@ light:
     name: Adventsljusstake
     entity_id: switch.tradfri_control_outlet
 
+
 input_boolean:
   vacation_mode:
     name: Vacation mode
@@ -76,14 +87,14 @@ telegram_bot:
     allowed_chat_ids:
       - !secret telegram_bot_chat_ids
 
-weblink:
-  entities:
-    - name: Spotify Web
-      url: https://open.spotify.com/browse/featured
-      icon: mdi:spotify
-    - name: Google calendar
-      url: https://calendar.google.com/calendar/r
-      icon: mdi:calendar
+#weblink:
+#  entities:
+#    - name: Spotify Web
+#      url: https://open.spotify.com/browse/featured
+#      icon: mdi:spotify
+#    - name: Google calendar
+#      url: https://calendar.google.com/calendar/r
+#      icon: mdi:calendar
 
 #ZONEZ
 zone:
@@ -115,7 +126,7 @@ tts:
 
 automation: !include_dir_merge_list automation/
 device_tracker: !include_dir_merge_list device_tracker/
-group: !include_dir_merge_named group/
+#group: !include_dir_merge_named group/
 media_player: !include_dir_merge_list media_player/
 #cast: !include_dir_merge_named /googel_cast
 notify: !include_dir_merge_list notify/
