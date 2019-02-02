@@ -1,8 +1,6 @@
 - platform: ping
   interval_seconds: 60
-  consider_home: 600
+  consider_home: 480
   hosts:
-    #lumigatewayv3_miio78891034: 192.168.1.18
-    #gwa0c9a0d6c1dd: 192.168.1.17
-    google_maps_105385772181593182046: 192.168.1.11 #calle
-    google_maps_108054089202607471767: 192.168.1.9
+    galaxy_s9_wifi: 192.168.1.11 #c
+    maliniphone_wifi: 192.168.1.9
