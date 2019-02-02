@@ -9,7 +9,7 @@ morning_light_week:
   lights:
     - light: light.tradfri_bulb_e14_w_opch_400lm
       brightness: 147
-    - light: light.adventsljusstake
+#    - light: light.adventsljusstake
 
 morning_light_weekend:
   module: light_schedule_morning
@@ -22,7 +22,7 @@ morning_light_weekend:
   lights:
     - light: light.tradfri_bulb_e14_w_opch_400lm
       brightness: 147
-    - light: light.adventsljusstake
+#    - light: light.adventsljusstake
 
 
 #morning_light_christmas:

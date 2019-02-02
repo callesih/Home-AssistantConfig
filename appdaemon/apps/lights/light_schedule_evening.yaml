@@ -6,9 +6,9 @@ evening_window:
   sunset_offset: +450
   constrain_input_boolean: input.boolean.vacation_mode,off
 
-evening_adventsljusstake:
-  module: light_schedule_evening
-  class: LightScheduleEvening
-  light: light.adventsljusstake
-  sunset_offset: +450
-  constrain_input_boolean: input.boolean.vacation_mode,off
+#evening_adventsljusstake:
+#  module: light_schedule_evening
+#  class: LightScheduleEvening
+#  light: light.adventsljusstake
+#  sunset_offset: +450
+#  constrain_input_boolean: input.boolean.vacation_mode,off
