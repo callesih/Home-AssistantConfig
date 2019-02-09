@@ -1,0 +1,16 @@
+input_boolean:
+  vacation_mode:
+    name: Semester
+  guests_mode:
+    name: Gäster
+  stadning:
+    name: Städning
+
+input_select:
+  house_mode_select:
+    name: Hus Status
+    options:
+      - Dag
+      - Natt
+      - Kväll
+      - Morgon

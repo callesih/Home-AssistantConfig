@@ -1,0 +1,71 @@
+homeassistant:
+  customize:
+    group.calle_presence:
+      entity_picture: /local/callebitmoji2.png
+
+    group.malin_presence:
+      entity_picture: /local/malin_bitmoji.png
+
+group:
+  calle_presence:
+    name: Calle
+    entities: 
+      - device_tracker.google_maps_105385772181593182046
+      - device_tracker.galaxy_s9_bt
+      - device_tracker.galaxy_s9_wifi
+
+  malin_presence:
+    name: Malin
+    entities: 
+      - device_tracker.google_maps_108054089202607471767
+      - device_tracker.maliniphone_wifi
+      - device_tracker.maliniphone_bt
+
+
+device_tracker:
+  - platform: bluetooth_tracker
+    interval_seconds: 10
+    consider_home: 300
+    track_new_devices: false
+
+  - platform: google_maps
+    username: !secret google_maps_username
+    password: !secret google_maps_password
+    max_gps_accuracy: 100
+
+  - platform: nmap_tracker
+    hosts: 192.168.1.1/30
+    interval_seconds: 10
+    track_new_devices: false
+    consider_home: 600
+    exclude:
+      - 192.168.1.1
+      - 192.168.1.2
+      - 192.168.1.3
+      - 192.168.1.4
+      - 192.168.1.5
+      - 192.168.1.8    #xbox wifi
+      - 192.168.1.13
+      - 192.168.1.17
+      - 192.168.1.18
+
+  - platform: ping
+    interval_seconds: 60
+    consider_home: 480
+    hosts:
+      galaxy_s9_wifi: 192.168.1.11 #c
+      maliniphone_wifi: 192.168.1.9
+
+#- platform: netgear
+#  host: 192.168.1.1
+#  username: !secret netgear_username
+#  password: !secret netgear_password
+#  interval_seconds: 300
+#  consider_home: 600
+#  new_device_defaults:
+#    track_new_devices: False
+#    hide_if_away: False
+#  exclude:
+#    - 192.168.1.1
+#    - 192.168.1.5
+#    - 192.168.1.10

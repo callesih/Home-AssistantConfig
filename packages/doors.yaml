@@ -1,0 +1,7 @@
+homeassistant:
+  customize:
+    ## Xiaomi ##
+    # Binary sensor #
+    binary_sensor.door_window_sensor_158d0001fa3524:
+      friendly_name: "Ytterdörr"  #Front Door
+      icon: mdi:door

@@ -1,0 +1,17 @@
+homeassistant:
+  customize:
+    ## Xiaomi ##
+    # Humidity    #
+    sensor.humidity_158d0002281dbd:
+      friendly_name: Luftfuktighet  #Humidity_Bedroom
+    sensor.humidity_158d00020ef826:
+      friendly_name: Luftfuktighet  #Humidity_Living room
+    sensor.humidity_158d00020ef44d:
+      friendly_name: Luftfuktighet  #Humidity_Balcony
+    # Temperature #
+    sensor.temperature_158d0002281dbd:
+      friendly_name: Temperatur  #Temperature_Bedroom
+    sensor.temperature_158d00020ef826:
+      friendly_name: Temperatur  #Temperature_Living room
+    sensor.temperature_158d00020ef44d:
+      friendly_name: Temperatur  #Temperature_Balcony
