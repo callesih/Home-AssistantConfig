@@ -1,67 +1,14 @@
-##### GROUPS / CARDS ####
-#weather:
-#  name: "Väder"
-#  entities: 
-#    - sensor.weather_wind_speed
-#    - sun.sun
-#    - sensor.weather_temperature
-##  - sensor.weather_symbol
-#
-#vasttrafik:
-#  name: Västtrafik
-#  entities: 
-#    - sensor.time
-#    - sensor.city
-#    - sensor.calle_work
-#    - sensor.malin_school_16
-#    - sensor.malin_school_55
-#  
-#living_room:
-#  name: Vardagsrum
-#  control: hidden
-#  entities:
-#    - sensor.temperature_158d00020ef826
-#    - sensor.humidity_158d00020ef826   
-#    - light.tradfri_bulb_e14_w_opch_400lm
-#    - light.tradfri_bulb_e27_ws_opal_980lm
-#    - light.adventsljusstake  #switch.tradfri_control_outlet
-#bedroom:
-#  name: Sovrum
-#  control: hidden
-#  entities:
-#    - sensor.temperature_158d0002281dbd  
-#    - sensor.humidity_158d0002281dbd 
-#    - light.gateway_light_7811dcb8f3c0
-#    - binary_sensor.motion_sensor_158d0001f9d45b
-#hall:
-#  name: Hall
-#  control: hidden
-#  entities:
-#    - binary_sensor.door_window_sensor_158d0001fa3524
-#
-#balcony:
-#  name: Balkong
-#  control: hidden
-#  entities:
-#    - sensor.temperature_158d00020ef44d
-#    - sensor.humidity_158d00020ef44d  
-#    
-#weblinks:
-#  name: Web links
-#  entities:
-#    - weblink.spotify_web
-#    - weblink.google_calendar
-#
-#system_info:
-#  name: System
-#  entities:
-#    - sensor.memory_free
-#    - sensor.processor_use
-#    - sensor.last_boot
-#    - sensor.disk_free_
-#modes:
-#  name: Modes
-#  entities:
-#    - input_boolean.guests_mode
-#    - input_boolean.vacation_mode
-#
+calle_presence:
+  name: Calle
+  entities: 
+    - device_tracker.google_maps_105385772181593182046
+    - device_tracker.galaxy_s9_bt
+    - device_tracker.galaxy_s9_wifi
+
+malin_presence:
+  name: Malin
+  entities: 
+    - device_tracker.google_maps_108054089202607471767
+    - device_tracker.maliniphone_wifi
+    - device_tracker.maliniphone_bt
+

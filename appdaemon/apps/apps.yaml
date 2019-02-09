@@ -21,15 +21,15 @@ night_motion_light_window:
   deactivate_time: "05:55:00"
   constrain_input_boolean: input_boolean.guests_mode,off
 
-night_motion_light_adventsljusstake:
-  module: night_light_motion
-  class: NightLightMotion
-  motion_sensor: binary_sensor.motion_sensor_158d0001f9d45b
-  light: light.adventsljusstake
-  brightness: 0
-  activate_time: "00:00:00"
-  deactivate_time: "05:55:00"
-  constrain_input_boolean: input_boolean.guests_mode,off
+#night_motion_light_adventsljusstake:
+#  module: night_light_motion
+#  class: NightLightMotion
+#  motion_sensor: binary_sensor.motion_sensor_158d0001f9d45b
+#  light: light.adventsljusstake
+#  brightness: 0
+#  activate_time: "00:00:00"
+#  deactivate_time: "05:55:00"
+#  constrain_input_boolean: input_boolean.guests_mode,off
 
 xiaomi_switch1:
   module: xiaomi_switch

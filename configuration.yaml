@@ -6,11 +6,14 @@ homeassistant:
   unit_system: metric
   time_zone: Europe/Stockholm
   customize: !include_dir_merge_named customize/
+  packages: !include_dir_named packages
   auth_providers:
    - type: homeassistant
 
+
 # Enables the frontend
 frontend:
+  themes: !include themes.yaml
 
 # Enables configuration UI
 config:
@@ -21,16 +24,9 @@ http:
   # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
   # base_url: example.duckdns.org:8123
 
-# Checks for available updates
-# Note: This component will send some information about your system to
-# the developers to assist with development of Home Assistant.
-# For more information, please see:
-# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
-
-# Logging
 recorder: !include logging/recorder.yaml
-history: !include logging/history.yaml      # Enables support for tracking state changes over time
-logbook: !include logging/logbook.yaml      # View all events in a logbook
+history: !include logging/history.yaml
+logbook: !include logging/logbook.yaml
 logger: !include logging/logger.yaml
 
 updater:
@@ -58,15 +54,18 @@ map:
 # Track the sun
 sun:
 
-#ios:
-
 # Cloud
 cloud:
 
+python_script:
+
 light:
   - platform: switch
-    name: Adventsljusstake
+    name: Hatt lampa
     entity_id: switch.tradfri_control_outlet
+  - platform: switch
+    name: Tv-bänk
+    entity_id: switch.tv_bank
 
 
 input_boolean:
@@ -87,26 +86,6 @@ telegram_bot:
     allowed_chat_ids:
       - !secret telegram_bot_chat_ids
 
-#weblink:
-#  entities:
-#    - name: Spotify Web
-#      url: https://open.spotify.com/browse/featured
-#      icon: mdi:spotify
-#    - name: Google calendar
-#      url: https://calendar.google.com/calendar/r
-#      icon: mdi:calendar
-
-#ZONEZ
-zone:
-  - name: Work
-    latitude: !secret latitude_work
-    longitude: !secret longitude_work
-    radius: 300
-
-  - name: Home
-    latitude: !secret latitude_maps
-    longitude: !secret longitude_maps
-    radius: 30
 
 #mqtt:
 #  broker: 192.168.1.13
@@ -126,9 +105,13 @@ tts:
 
 automation: !include_dir_merge_list automation/
 device_tracker: !include_dir_merge_list device_tracker/
-#group: !include_dir_merge_named group/
+group: !include_dir_merge_named group/
 media_player: !include_dir_merge_list media_player/
-#cast: !include_dir_merge_named /googel_cast
+cast: !include_dir_merge_named /googel_cast
 notify: !include_dir_merge_list notify/
 script: !include_dir_merge_named script/
 sensor: !include_dir_merge_list sensor/
+
+
+
+zone: !include zones.yaml

@@ -1,6 +1,6 @@
   exclude:
     domains:
       - automation
-      - media_player      
+      - media_player
     entities:
       - device_tracker.ipad

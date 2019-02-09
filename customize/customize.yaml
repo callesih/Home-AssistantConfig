@@ -8,7 +8,13 @@ group.all_switches:
   hidden: false
 group.all_lights:
   hidden: false
-  
+
+group.calle_presence:
+  entity_picture: /local/callebitmoji2.png
+
+group.malin_presence:
+  entity_picture: /local/malin_bitmoji.png
+
 ## Xiaomi ##
  # Humidity    #
 sensor.humidity_158d0002281dbd:
@@ -41,12 +47,12 @@ light.gateway_light_7811dcb8f3c0:
 #light.tradfri_bulb_e27_ws_opal_980lm:
 #  friendly_name: Matbord
 ## Outlet ##
-switch.tradfri_control_outlet:
-  friendly_name: Adventsljusstake
+#switch.tradfri_control_outlet:
+#  friendly_name: Adventsljusstake
 ## Grupper ##
-light.fonster:
-  friendly_name: "IKEA group fönster"
-  hidden: true
-light.vardagsrum:
-  friendly_name: IKEA group vardagsrum
-  hidden: true
+#light.fonster:
+#  friendly_name: "IKEA group fönster"
+#  hidden: true
+#light.vardagsrum:
+#  friendly_name: IKEA group vardagsrum
+#  hidden: true
