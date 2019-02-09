@@ -1,6 +1,0 @@
-- platform: ping
-  interval_seconds: 60
-  consider_home: 480
-  hosts:
-    galaxy_s9_wifi: 192.168.1.11 #c
-    maliniphone_wifi: 192.168.1.9

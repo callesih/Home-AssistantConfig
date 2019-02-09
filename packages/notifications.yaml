@@ -1,0 +1,28 @@
+telegram_bot:
+  - platform: broadcast
+    api_key: !secret telegram_bot_api
+    allowed_chat_ids:
+      - !secret telegram_bot_chat_ids
+
+notify:
+  - name: telegram_calle
+    platform: telegram
+    chat_id: !secret telegram_bot_chat_ids
+
+  - name: pushbullet_calle
+    platform: pushbullet
+    api_key: !secret pushbullet
+
+
+  - name: all
+    platform: group
+    services:
+      - service: telegram_calle
+      - service: pushbullet_calle
+        data:
+          target: device/SamsungS9
+
+  - name: calle
+    platform: group
+    services:
+      - service: telegram_calle

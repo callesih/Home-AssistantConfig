@@ -1,0 +1,14 @@
+# Track the sun
+sun:
+
+sensor:
+  - platform: yr
+    name: Weather
+  #   forecast: 24
+    monitored_conditions:
+      - temperature
+      - symbol
+      - windSpeed
+      - cloudiness
+      - lowClouds
+  #     - humidity

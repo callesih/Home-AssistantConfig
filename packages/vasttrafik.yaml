@@ -1,3 +1,4 @@
+sensor:
   - platform: vasttrafik
     key: !secret vasttrafik_key
     secret: !secret vasttrafik_secret

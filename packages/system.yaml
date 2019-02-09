@@ -1,0 +1,17 @@
+sensor:
+  - platform: systemmonitor
+    resources:
+      - type: disk_free
+        arg: /
+      - type: memory_free
+      - type: processor_use
+      - type: last_boot
+      - type: memory_use
+
+  - platform: time_date
+    display_options:
+      - 'time'
+  #     - 'date'
+  #      - 'date_time'
+  #      - 'time_date'
+  #      - 'time_utc'
