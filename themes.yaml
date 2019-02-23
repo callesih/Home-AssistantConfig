@@ -8,6 +8,7 @@ midnight-remake:
   # Text colors
   primary-text-color: '#ffffff'
   text-primary-color: 'var(--primary-text-color)'
+  lumo-body-text-color: 'var(--primary-text-color)'
   secondary-text-color: 'var(--accent-color)'
   disabled-text-color: 'rgba(150,150,150,.5)'
   label-badge-border-color: 'green'
