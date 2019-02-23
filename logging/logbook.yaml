@@ -1,10 +1,10 @@
 exclude:
     domains:
       - media_player
+    entities:
       - device_tracker.google_maps_105385772181593182046
       - device_tracker.galaxy_s9_bt
       - device_tracker.galaxy_s9_wifi
       - device_tracker.google_maps_108054089202607471767
       - device_tracker.maliniphone_wifi
       - device_tracker.maliniphone_bt
-#    entities:

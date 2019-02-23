@@ -7,7 +7,7 @@ input_boolean:
     name: Städning
 
 input_select:
-  house_mode_select:
+  house_modes:
     name: Hus Status
     options:
       - Dag
