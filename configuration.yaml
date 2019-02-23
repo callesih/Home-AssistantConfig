@@ -31,6 +31,7 @@ updater:
   reporting: False
 
 custom_updater:
+  mode: storage
   hide_sensor: False
   track:
     - components
