@@ -1,0 +1,21 @@
+house_modes_week:
+  module: house_modes
+  class: HouseModes
+  motion_sensor: binary_sensor.motion_sensor_158d0001f9d45b
+  activate_time: "05:30:00"
+  deactivate_time: "09:00:00"
+  constrain_days: "mon,tue,wed,thu,fri"
+  night_time: "23:30:00"
+  sunset_offset: +450
+  sunrise_offset: +450
+
+house_modes_weekend:
+  module: house_modes
+  class: HouseModes
+  motion_sensor: binary_sensor.motion_sensor_158d0001f9d45b
+  activate_time: "08:00:00"
+  deactivate_time: "12:00:00"
+  constrain_days: "sat,sun"
+  night_time: "00:00:00"
+  sunset_offset: +450
+  sunrise_offset: +450

@@ -4,7 +4,7 @@ import datetime
 class NightLightMotion(hass.Hass):
 
     def initialize(self):
-        self.log("NightLight Init")
+        self.log("Initializing NightLightMotion...")
 
         time_off = self.parse_time(self.args["deactivate_time"])
         time_off = (datetime.datetime.combine(datetime.date(1, 1, 1), time_off) + datetime.timedelta(minutes=2)).time()
@@ -15,7 +15,8 @@ class NightLightMotion(hass.Hass):
                           constrain_end_time = self.args["deactivate_time"])
 
         self.run_daily(self.light_off, time_off)
-        self.log("NightLight: off time {} ".format(time_off))
+        self.log("NightLightMotion: off time {}".format(time_off))
+        self.log("Done initializing NightLightMotion")
     
     def motion(self, entity, attribute, old, new, kwargs):
         if new == "on" and old == "off":
