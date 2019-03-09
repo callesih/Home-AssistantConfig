@@ -30,6 +30,8 @@ logger: !include logging/logger.yaml
 updater:
   reporting: False
 
+system_health:
+
 custom_updater:
   mode: storage
   hide_sensor: False
