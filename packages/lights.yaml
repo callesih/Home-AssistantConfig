@@ -27,3 +27,15 @@ light:
   - platform: switch
     name: Tv-bänk
     entity_id: switch.tv_bank
+
+script:
+  dekorationsbelysning:
+    alias: 'dekorationsbelysning'
+    sequence:
+      - service: light.turn_on
+        data:
+          entity_id:
+          - light.fonster_2
+          - light.tradfri_bulb_e14_w_opch_400lm
+          - light.hatt_lampa
+          - light.tv_bank
