@@ -20,9 +20,9 @@ notify:
 #      - service: ios_malin_iphone
       - service: ios_malins_ipad
       - service: telegram_calle
-      - service: pushbullet_calle
-        data:
-          target: device/SamsungS9
+#      - service: pushbullet_calle
+#        data:
+#          target: device/SamsungS9
 
   - name: calle
     platform: group

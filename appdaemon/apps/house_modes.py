@@ -40,7 +40,7 @@ class HouseModes(hass.Hass):
 
     def natt(self, kwargs):
         current_mode = self.get_current_mode()
-        if current_mode == "Kväll":
+        if current_mode == "Dag" or current_mode == "Kväll":
             self.select_option("input_select.house_modes", "Natt")
             self.debug_log()
 

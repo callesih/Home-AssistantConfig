@@ -26,7 +26,7 @@
   action:
     - service: notify.calle
       data_template:
-        title: "Info"
+        title: "*Info*"
         message: "Home Assistant has started."
 
 - alias: On shutdown
@@ -36,5 +36,5 @@
   action:
     - service: notify.calle
       data_template:
-        title: "Info"
+        title: "*Info*"
         message: "Home Assistant has shutdown."
