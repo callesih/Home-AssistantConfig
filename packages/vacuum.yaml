@@ -10,31 +10,60 @@ sensor:
       dammbot_status_sensor:
         friendly_name: Dammbot status sensor
         value_template: >-
-          {{ states.vacuum.dammbot.attributes.status }}
-
-automation: 
-  - alias: Dammbot status message
-    trigger:
-      - platform: state
-        entity_id: vacuum.dammbot
-    action:
-      - service: notify.calle
-        data:
-          title: '*Dammbot*'
-          message: >-
-            {{states.sensor.dammbot_status_sensor.state}}
-
-  - alias: Dammbot klar
-    trigger:
-      - platform: state
-        entity_id: vacuum.dammbot
-        from: 'returning'
-        to: 'docked'
-    action:
-      - service: notify.malin
-        data:
-          title: '*Dammbot*'
-          message: Jag har dammsugit klart och är tillbaka på min plats
-          data:
-            push:
-              thread-id: "dammbot"
+          #{{ states.vacuum.dammbot.attributes.status }}
+          {{ states.vacuum.dammbot.state }}
+# automation: 
+#   - alias: Dammbot status message from docked
+#     initial_state: true
+#     trigger:
+#       - platform: state
+#         entity_id: vacuum.dammbot
+#         from: 'docked'
+#     action:
+#       - service: notify.calle
+#         data:
+#           title: '*Dammbot*'
+#           message: >-
+#             #{{states.sensor.dammbot_status_sensor.state}}
+#             {{ states.vacuum.dammbot.state }}
+#   - alias: Dammbot status message from returning
+#     initial_state: true    
+#     trigger:
+#       - platform: state
+#         entity_id: vacuum.dammbot
+#         from: 'returning'
+#     action:
+#       - service: notify.calle
+#         data:
+#           title: '*Dammbot*'
+#           message: >-
+#             #{{states.sensor.dammbot_status_sensor.state}}
+#             {{ states.vacuum.dammbot.state }}
+#   - alias: Dammbot status message from cleaning
+#     initial_state: true
+#     trigger:
+#       - platform: state
+#         entity_id: vacuum.dammbot
+#         from: 'cleaning'
+#     action:
+#       - service: notify.calle
+#         data:
+#           title: '*Dammbot*'
+#           message: >-
+#             {{states.sensor.dammbot_status_sensor.state}}
+#             #{{ states.vacuum.dammbot.state }}
+#   - alias: Dammbot klar
+#     initial_state: true
+#     trigger:
+#       - platform: state
+#         entity_id: vacuum.dammbot
+#         from: 'returning'
+#         to: 'docked'
+#     action:
+#       - service: notify.malin
+#         data:
+#           title: '*Dammbot*'
+#           message: Jag har dammsugit din lägenhet
+#           data:
+#             push:
+#               thread-id: "dammbot"
